@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServiceName": {
+      "type": "string",
+      "defaultValue": "cloud-backend-api"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-03-01",
+      "name": "cloud-plan",
+      "location": "East US",
+      "sku": {
+        "name": "F1",
+        "tier": "Free"
+      },
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters(appServiceName)]",
+      "location": "East US",
+      "dependsOn": ["cloud-plan"],
+      "properties": {
+        "serverFarmId": "[resourceId(Microsoft.Web/serverfarms, cloud-plan)]",
+        "siteConfig": {
+          "linuxFxVersion": "PYTHON|3.12"
+        }
+      }
+    }
+  ]
+}
