@@ -1,0 +1,11 @@
+cat > requirements-azure.txt << EOF
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+azure-functions==1.17.0
+azure-identity==1.17.0
+azure-cosmos==4.4.0
+sqlalchemy[asyncio]==2.0.23
+pydantic-settings==2.1.0
+alembic==1.13.1
+structlog==24.1.0
+EOF
