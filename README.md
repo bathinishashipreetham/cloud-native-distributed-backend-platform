@@ -15,3 +15,4 @@ pip install -r requirements-azure.txt
 uvicorn src.app.main:app --reload --port 8000
 
 Live API: http://localhost:8000/health
+# CI Trigger
