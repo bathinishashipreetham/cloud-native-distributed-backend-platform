@@ -1,0 +1,28 @@
+{
+  "name": "Cloud Native Backend (Azure)",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "FastAPI Backend API",
+      "onAutoForward": "public",
+      "requireLocalPort": true
+    }
+  },
+  "postCreateCommand": "pip install -r requirements-azure.txt",
+  "postStartCommand": .devcontainer/postStartCommand.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.fastapi",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.azurecli"
+      ]
+    }
+  }
+}
